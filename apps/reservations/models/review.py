@@ -1,9 +1,10 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from apps.users.models import User
 
 
 class Review(models.Model):
-    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     message = models.TextField()
     rate = models.SmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)],
