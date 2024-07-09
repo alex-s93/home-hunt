@@ -1,13 +1,14 @@
 from django.db import models
 
 from apps.reservations.choices.apartment_types import ApartmentTypes
+from apps.users.models import User
 
 
 class Apartment(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)
     landlord = models.ForeignKey(
-        'User',
+        User,
         on_delete=models.CASCADE,
         related_name='apartments'
     )
