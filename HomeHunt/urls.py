@@ -15,8 +15,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework.permissions import AllowAny
+
+schema_view = get_schema_view(
+    info=openapi.Info(
+        title='Home Hunt Open API',
+        default_version='1',
+        description='''API for apartments reservation system.''',
+        terms_of_service='https://www.google.com/policies/terms/',
+        contact=openapi.Contact(
+            name='Oleksii Solodkov',
+            email='test.email@gmail.com',
+        ),
+        license=openapi.License(
+            name="CrazyHedgehog License"
+        )
+    ),
+    public=True,
+    permission_classes=[AllowAny],
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/', include('apps.router')),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=1000)),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=1000)),
 ]

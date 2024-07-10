@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 from apps.reservations.choices.apartment_types import ApartmentTypes
 from apps.users.models import User
