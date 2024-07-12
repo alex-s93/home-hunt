@@ -11,4 +11,4 @@ class ApartmentTypes(Enum):
 
     @classmethod
     def choices(cls):
-        return [(attr.name, attr.value) for attr in cls]
+        return [(attr.value, attr.value) for attr in cls]

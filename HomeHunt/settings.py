@@ -49,7 +49,9 @@ INSTALLED_APPS = [
 
     # local
     'apps.users.apps.UsersConfig',
-    'apps.reservations.apps.ReservationsConfig'
+    'apps.addresses.apps.AddressesConfig',
+    'apps.apartments.apps.ApartmentsConfig',
+    'apps.reservations.apps.ReservationsConfig',
 ]
 
 MIDDLEWARE = [
