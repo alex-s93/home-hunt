@@ -1,7 +1,8 @@
 from django.db import models
 from django.db.models import Avg
 
-from apps.reservations.choices.apartment_types import ApartmentTypes
+from apps.addresses.models import Address
+from apps.choices.apartment_types import ApartmentTypes
 from apps.users.models import User
 
 
@@ -14,7 +15,7 @@ class Apartment(models.Model):
         related_name='apartments'
     )
     address = models.ForeignKey(
-        'Address',
+        Address,
         on_delete=models.SET_NULL,
         related_name='apartments',
         null=True,
@@ -24,6 +25,7 @@ class Apartment(models.Model):
     rooms = models.SmallIntegerField()
     apartment_type = models.CharField(max_length=20, choices=ApartmentTypes.choices, default=ApartmentTypes.APARTMENT)
     is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     @property
     def avg_rate(self):
@@ -31,3 +33,6 @@ class Apartment(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        unique_together = ('title', 'address')
