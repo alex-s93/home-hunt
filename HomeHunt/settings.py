@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'apps.addresses.apps.AddressesConfig',
     'apps.apartments.apps.ApartmentsConfig',
     'apps.reservations.apps.ReservationsConfig',
+    'apps.reviews.apps.ReviewsConfig',
 ]
 
 MIDDLEWARE = [

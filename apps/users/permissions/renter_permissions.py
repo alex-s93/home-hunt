@@ -11,6 +11,6 @@ class IsRenter(BasePermission):
         )
 
 
-class IsRenterOwnerOfReservation(IsRenter):
+class IsRenterOwner(IsRenter):
     def has_object_permission(self, request, view, obj):
         return obj.renter == request.user

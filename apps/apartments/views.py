@@ -7,7 +7,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from apps.apartments.filters.apartment_filter import ApartmentFilter
 from apps.apartments.models import Apartment
-from apps.apartments.serializers.apartment_serializers import ApartmentSerializer
+from apps.apartments.serializers import ApartmentSerializer
 from apps.users.permissions.landlord_permissions import IsLandlord, IsLandlordOwner
 
 

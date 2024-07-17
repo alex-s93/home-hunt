@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.db.models import Q
 
 from apps.apartments.models import Apartment
-from apps.apartments.serializers.apartment_serializers import ApartmentSerializer
+from apps.apartments.serializers import ApartmentSerializer
 from apps.reservations.models import Reservation
 
 

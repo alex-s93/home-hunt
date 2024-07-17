@@ -16,7 +16,7 @@ class AddressSerializer(serializers.ModelSerializer):
             return data
 
 
-class AddressApartmentSerializer(serializers.ModelSerializer):
+class ApartmentAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = '__all__'

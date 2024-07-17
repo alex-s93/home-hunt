@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Avg
 
 from apps.addresses.models import Address
 from apps.choices.apartment_types import ApartmentTypes
@@ -27,12 +26,21 @@ class Apartment(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    @property
-    def avg_rate(self):
-        return self.reviews.aggregate(avg_rate=Avg('rate'))['avg_rate'] or 0
-
-    def __str__(self):
-        return self.title
-
     class Meta:
         unique_together = ('title', 'address')
+
+    @property
+    def avg_rate(self):
+        reviews = self.reviews
+        if reviews:
+            avg_rate = sum(review.rate for review in reviews) / len(reviews)
+            return round(avg_rate, 1)
+        return 0
+
+    @property
+    def reviews(self):
+        return [reservation.review for reservation in self.reservations.all() if hasattr(reservation, 'review')]
+
+
+def __str__(self):
+    return self.title
