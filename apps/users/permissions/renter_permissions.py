@@ -1,7 +1,16 @@
 from rest_framework.permissions import BasePermission
 
 
-class IsOwnerRenter(BasePermission):
+class IsRenter(BasePermission):
+    def has_permission(self, request, view):
+        return bool(
+            request.user
+            and request.user.is_authenticated
+            and not request.user.is_landlord
+            and not request.user.is_staff
+        )
+
+
+class IsRenterOwnerOfReservation(IsRenter):
     def has_object_permission(self, request, view, obj):
-        user = obj.renter or obj.apartment.landlord
-        return request.user == user
+        return obj.renter == request.user

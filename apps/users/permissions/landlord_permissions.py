@@ -1,16 +1,22 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 
-class IsOwnerLandlord(BasePermission):
+class IsLandlord(BasePermission):
+    def has_permission(self, request, view):
+        return bool(
+            request.user
+            and request.user.is_authenticated
+            and request.user.is_landlord
+        )
+
+
+class IsLandlordOwner(IsLandlord):
     def has_object_permission(self, request, view, obj):
         if request.method in SAFE_METHODS:
             return True
-        return obj.landlord == request.user or request.user.is_staff
+        return obj.landlord == request.user
 
 
-class IsLandlordOrAdmin(BasePermission):
-    def has_permission(self, request, view):
-        return bool(
-            request.user and request.user.is_authenticated
-            and (request.user.is_landlord or request.user.is_staff)
-        )
+class IsLandlordOwnerOfReservationApartment(IsLandlord):
+    def has_object_permission(self, request, view, obj):
+        return obj.apartment.landlord == request.user

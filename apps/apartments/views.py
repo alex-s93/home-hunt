@@ -7,8 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from apps.apartments.filters.apartment_filter import ApartmentFilter
 from apps.apartments.models import Apartment
-from apps.apartments.serializers.apartment_serializers import ApartmentSerializer, ApartmentAdminSerializer
-from apps.users.permissions.landlord_permissions import IsLandlordOrAdmin, IsOwnerLandlord
+from apps.apartments.serializers.apartment_serializers import ApartmentSerializer
+from apps.users.permissions.landlord_permissions import IsLandlord, IsLandlordOwner
 
 
 class ApartmentListCreateView(ListCreateAPIView):
@@ -16,33 +16,25 @@ class ApartmentListCreateView(ListCreateAPIView):
     filterset_class = ApartmentFilter
     search_fields = ['title', 'description']
     ordering_fields = ['price', 'created_at']
+    serializer_class = ApartmentSerializer
 
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
             self.permission_classes = [AllowAny]
         else:
-            self.permission_classes = [IsLandlordOrAdmin]
+            self.permission_classes = [IsLandlord]
 
         return [permission() for permission in self.permission_classes]
 
-    def get_serializer_class(self):
-        if self.request.method == 'POST' and self.request.user.is_staff:
-            return ApartmentAdminSerializer
-        else:
-            return ApartmentSerializer
-
     def get_queryset(self):
         user = self.request.user
-        if user.is_authenticated and user.is_staff or user.is_landlord:
+        if user.is_authenticated and user.is_landlord:
             return Apartment.objects.all()
-        elif user.is_authenticated and not user.is_landlord:
+        else:
             return Apartment.objects.filter(is_active=True)
 
     def perform_create(self, serializer):
-        if self.request.user.is_staff:
-            serializer.save()
-        else:
-            serializer.save(landlord=self.request.user)
+        serializer.save(landlord=self.request.user)
 
 
 class ApartmentDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
@@ -53,7 +45,7 @@ class ApartmentDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
         if self.request.method in SAFE_METHODS:
             self.permission_classes = [AllowAny]
         else:
-            self.permission_classes = [IsLandlordOrAdmin, IsOwnerLandlord]
+            self.permission_classes = [IsLandlordOwner]
 
         return [permission() for permission in self.permission_classes]
 
