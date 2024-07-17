@@ -51,9 +51,3 @@ class ApartmentSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This combination of title and address already exists.")
 
         return instance
-
-
-class ApartmentAdminSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Apartment
-        fields = '__all__'
