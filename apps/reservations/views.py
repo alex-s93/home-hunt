@@ -19,7 +19,7 @@ from apps.users.permissions.landlord_permissions import (
     IsLandlord
 )
 from apps.users.permissions.renter_permissions import (
-    IsRenterOwnerOfReservation,
+    IsRenterOwner,
     IsRenter
 )
 
@@ -58,12 +58,12 @@ class ReservationDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
             self.permission_classes = [
-                IsRenterOwnerOfReservation |
+                IsRenterOwner |
                 IsLandlordOwnerOfReservationApartment
             ]
         else:
             self.permission_classes = [
-                IsRenterOwnerOfReservation
+                IsRenterOwner
             ]
 
         return [permission() for permission in self.permission_classes]
@@ -86,7 +86,7 @@ class ReservationDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
 
 
 class ReservationCancelView(UpdateAPIView):
-    permission_classes = [IsRenterOwnerOfReservation]
+    permission_classes = [IsRenterOwner]
     serializer_class = CancelReservationSerializer
 
     def get_queryset(self):
