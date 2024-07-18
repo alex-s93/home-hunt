@@ -1,6 +1,6 @@
 # Home Hunt API
 
-This project is an API for apartments reservation. It allows users to manage apartments (with addresses), make
+This project is an API for apartment reservations. It allows users to manage apartments (with addresses), make
 reservations, and leave reviews.
 
 ## Features
@@ -115,4 +115,7 @@ reservations, and leave reviews.
 5. Run the development server:
     ```sh
     python manage.py runserver
-    ```   
+    ```
+6. Open the swagger page to see all endpoints. Here you can also try all endpoints:
+    
+    http://localhost:8000/swagger/
