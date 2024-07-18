@@ -41,6 +41,5 @@ class Apartment(models.Model):
     def reviews(self):
         return [reservation.review for reservation in self.reservations.all() if hasattr(reservation, 'review')]
 
-
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.title
