@@ -1,0 +1,392 @@
+[
+  {
+    "model": "addresses.address",
+    "pk": 1,
+    "fields": {
+      "land": "Baden-Württemberg",
+      "city": "Berlin",
+      "street": "Bergheimer Strasse",
+      "house_number": "9a",
+      "postal_code": "50123"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 2,
+    "fields": {
+      "land": "Baden-Württemberg",
+      "city": "Frankfurt",
+      "street": "Bergheimer Strasse",
+      "house_number": "9b",
+      "postal_code": "50123"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 3,
+    "fields": {
+      "land": "Berlin",
+      "city": "Berlin",
+      "street": "test strasse",
+      "house_number": "8a",
+      "postal_code": "01002"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 4,
+    "fields": {
+      "land": "Berlin",
+      "city": "Berlin",
+      "street": "test strasse",
+      "house_number": "8b",
+      "postal_code": "01002"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 5,
+    "fields": {
+      "land": "Berlin",
+      "city": "Berlin",
+      "street": "test strasse",
+      "house_number": "8c",
+      "postal_code": "01002"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 6,
+    "fields": {
+      "land": "Berlin",
+      "city": "Berlin",
+      "street": "test strasse",
+      "house_number": "8d",
+      "postal_code": "01002"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 7,
+    "fields": {
+      "land": "Baden-Württemberg",
+      "city": "Frankfurt",
+      "street": "Test strasse",
+      "house_number": "1",
+      "postal_code": "67590"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 8,
+    "fields": {
+      "land": "Rheinland-Pfalz",
+      "city": "Kaiserslautern",
+      "street": "Eselsfuerther Bahnhof",
+      "house_number": "4",
+      "postal_code": "67657"
+    }
+  },
+  {
+    "model": "addresses.address",
+    "pk": 9,
+    "fields": {
+      "land": "Rheinland-Pfalz",
+      "city": "Rammstein",
+      "street": "Eselsfuerther Bahnhof",
+      "house_number": "4",
+      "postal_code": "67657"
+    }
+  },
+  {
+    "model": "apartments.apartment",
+    "pk": 1,
+    "fields": {
+      "title": "First apartment",
+      "description": "it's the best apartment for renting in Berlin",
+      "landlord": 5,
+      "address": 6,
+      "price": "12.25",
+      "rooms": 1,
+      "apartment_type": "Hostel",
+      "is_active": false,
+      "created_at": "2024-07-12T14:09:31.628Z"
+    }
+  },
+  {
+    "model": "apartments.apartment",
+    "pk": 2,
+    "fields": {
+      "title": "Second apartment",
+      "description": "it's the second best apartment for renting in Berlin",
+      "landlord": 2,
+      "address": 4,
+      "price": "35.25",
+      "rooms": 2,
+      "apartment_type": "Apartment",
+      "is_active": true,
+      "created_at": "2024-07-12T14:10:55.628Z"
+    }
+  },
+  {
+    "model": "apartments.apartment",
+    "pk": 3,
+    "fields": {
+      "title": "Third apartment in Berlin",
+      "description": "test description for apartment",
+      "landlord": 2,
+      "address": 3,
+      "price": "100.25",
+      "rooms": 3,
+      "apartment_type": "Hotel",
+      "is_active": true,
+      "created_at": "2024-07-12T14:00:55.628Z"
+    }
+  },
+  {
+    "model": "apartments.apartment",
+    "pk": 4,
+    "fields": {
+      "title": "best frankfurt house",
+      "description": "test description for house in frankfurt",
+      "landlord": 5,
+      "address": 7,
+      "price": "190.20",
+      "rooms": 4,
+      "apartment_type": "House",
+      "is_active": true,
+      "created_at": "2024-07-12T20:04:42.801Z"
+    }
+  },
+  {
+    "model": "apartments.apartment",
+    "pk": 5,
+    "fields": {
+      "title": "best KL guest house",
+      "description": "test description for house in frankfurt",
+      "landlord": 2,
+      "address": 8,
+      "price": "150.10",
+      "rooms": 3,
+      "apartment_type": "Guest house",
+      "is_active": true,
+      "created_at": "2024-07-13T16:06:30.106Z"
+    }
+  },
+  {
+    "model": "apartments.apartment",
+    "pk": 6,
+    "fields": {
+      "title": "best KL guest house 2",
+      "description": "test description for house in frankfurt",
+      "landlord": 2,
+      "address": 9,
+      "price": "170.10",
+      "rooms": 2,
+      "apartment_type": "Flat",
+      "is_active": true,
+      "created_at": "2024-07-11T16:06:51.343Z"
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 2,
+    "fields": {
+      "renter": 6,
+      "apartment": 2,
+      "date_from": "2024-07-15",
+      "date_to": "2024-07-20",
+      "is_approved_by_landlord": true,
+      "is_canceled": true
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 7,
+    "fields": {
+      "renter": 4,
+      "apartment": 6,
+      "date_from": "2024-07-09",
+      "date_to": "2024-07-11",
+      "is_approved_by_landlord": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 10,
+    "fields": {
+      "renter": 4,
+      "apartment": 6,
+      "date_from": "2024-07-21",
+      "date_to": "2024-07-25",
+      "is_approved_by_landlord": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 12,
+    "fields": {
+      "renter": 4,
+      "apartment": 6,
+      "date_from": "2024-07-26",
+      "date_to": "2024-07-28",
+      "is_approved_by_landlord": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 13,
+    "fields": {
+      "renter": 6,
+      "apartment": 4,
+      "date_from": "2024-07-18",
+      "date_to": "2024-07-25",
+      "is_approved_by_landlord": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 16,
+    "fields": {
+      "renter": 6,
+      "apartment": 4,
+      "date_from": "2024-07-26",
+      "date_to": "2024-07-27",
+      "is_approved_by_landlord": false,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 17,
+    "fields": {
+      "renter": 6,
+      "apartment": 4,
+      "date_from": "2024-07-26",
+      "date_to": "2024-07-28",
+      "is_approved_by_landlord": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "reservations.reservation",
+    "pk": 18,
+    "fields": {
+      "renter": 6,
+      "apartment": 6,
+      "date_from": "2024-07-09",
+      "date_to": "2024-07-11",
+      "is_approved_by_landlord": true,
+      "is_canceled": false
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$C4lI0tkCJX3nOuW37tvPiL$zn/e2O+JJPJ+PqJtRgUORybJyex5v7HRI7GQSVgs02E=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "testadmin1",
+      "email": "test.admin@gmail.com",
+      "full_name": "Test Admin",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-07-11T08:33:22.352Z",
+      "updated_at": "2024-07-11T08:33:22.353Z",
+      "deleted_at": null,
+      "deleted": false,
+      "is_landlord": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$GsNW4aIibaWv1ZoOVxRnB7$iujRsIJUQ4VZoWzUax4CKdicYlUi2QOkWH9PD8LM1X0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test_landlord_1",
+      "email": "landlord@gmail.com",
+      "full_name": "Test landlord",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-11T16:45:34.828Z",
+      "updated_at": "2024-07-11T16:45:34.828Z",
+      "deleted_at": null,
+      "deleted": false,
+      "is_landlord": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$P5usSsg1k5muz00p0VonID$q5vgr/cldPtp7fNo7HQeQKhKSJ1L0cOvPrlRUtjbjS4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test_renter_123",
+      "email": "renter@gmail.com",
+      "full_name": "Test Renter",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-11T17:51:13.957Z",
+      "updated_at": "2024-07-11T17:51:13.957Z",
+      "deleted_at": null,
+      "deleted": false,
+      "is_landlord": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$9ZB0L1mJl0rvQDUZKdHp9H$S3FT6PQrSJZG7FGTF+r8heWxnHPQuY9s1Up5IzDqR2c=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test_landlord_2",
+      "email": "landlord_2@gmail.com",
+      "full_name": "Test Landlordtwo",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-15T10:46:23.642Z",
+      "updated_at": "2024-07-15T10:46:23.643Z",
+      "deleted_at": null,
+      "deleted": false,
+      "is_landlord": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$yIF7FBPAaeUjzYCPFGzwF5$uuQcfwadU7QxJCBAT4ZFhvY5D3DSUStI/Zm63ae7hq8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test_renter_2",
+      "email": "renter_2@gmail.com",
+      "full_name": "Test Rentertwo",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-15T10:52:50.423Z",
+      "updated_at": "2024-07-15T10:52:50.423Z",
+      "deleted_at": null,
+      "deleted": false,
+      "is_landlord": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

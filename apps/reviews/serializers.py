@@ -11,10 +11,13 @@ class ApartmentReviewSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    apartment = serializers.SerializerMethodField()
+
     class Meta:
         model = Review
         fields = '__all__'
-        read_only_fields = ['renter']
+        read_only_fields = ['renter', 'apartment']
+        write_only_fields = ['reservation']
 
     def validate(self, data):
         user = self.context['request'].user
@@ -41,3 +44,11 @@ class ReviewSerializer(serializers.ModelSerializer):
             )
 
         return data
+
+    def get_apartment(self, obj):
+        return obj.reservation.apartment.id
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation.pop('reservation', None)
+        return representation

@@ -81,7 +81,7 @@ class ReservationDetailsSerializer(AbstractReservationCreateDetailSerializer):
 class ReservationCreateSerializer(AbstractReservationCreateDetailSerializer):
     class Meta:
         model = Reservation
-        fields = ('renter', 'apartment', 'date_from', 'date_to')
+        fields = ['renter', 'apartment', 'date_from', 'date_to']
         read_only_fields = ['renter']
 
     def validate(self, data):
@@ -110,6 +110,15 @@ class CancelReservationSerializer(serializers.ModelSerializer):
             'date_to',
             'is_approved_by_landlord',
         ]
+
+    def validate(self, data):
+        is_canceled = data.get('is_canceled')
+        date_from = self.instance.date_from
+        if is_canceled and timezone.now().date() >= date_from - timedelta(days=5):
+            raise serializers.ValidationError(
+                "You can cancel your booking up to 5 days in advance."
+            )
+        return data
 
 
 class ApproveReservationSerializer(serializers.ModelSerializer):
